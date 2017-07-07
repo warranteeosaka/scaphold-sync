@@ -1,0 +1,65 @@
+#!/usr/bin/env node --no-deprecation
+
+const path = require('path')
+const fs = require('fs')
+
+function coerceFolder (property, raw) {
+  const folder = path.resolve(raw)
+  var stat
+  try {
+    stat = fs.statSync(folder)
+  } catch (e) {
+    throw new Error(`--${property}, set to "${folder}", does not exist.`)
+  }
+  if (!stat.isDirectory()) {
+    throw new Error(`--${property}, set to "${folder}", is expected to be a folder but isn't.`)
+  }
+  return folder
+}
+
+require('yargs')
+  .usage('$0 <command> <options>')
+  .options({
+    appName: {
+      type: 'string',
+      describe: 'Scaphold Application Name',
+      alias: ['name', 'n'],
+      demandOption: `Without an scaphold Application Name we don\'t know how to connect to the database.`
+    },
+    region: {
+      type: 'string',
+      describe: 'Scaphold Region, taken from package.json if available. else it will assume us-west-2.',
+      alias: ['r']
+    },
+    concurrency: {
+      type: 'number',
+      describe: 'Maximum concurrent operations run against scaphold.',
+      alias: ['cops', 'o'],
+      default: 5
+    },
+    cwd: {
+      type: 'string',
+      normalize: true,
+      describe: 'Folder with a package.json that contains scaphold access credentials.',
+      default: '.',
+      coerce: coerceFolder.bind(null, 'cwd'),
+      alias: ['c']
+    },
+    schemaFolder: {
+      type: 'string',
+      normalize: true,
+      describe: 'Folder to store the scaphold schema data.',
+      default: './schema',
+      coerce: coerceFolder.bind(null, 'schemaFolder'),
+      alias: ['schema', 's']
+    },
+    appId: {
+      type: 'string',
+      describe: 'Scaphold application ID, taken from package.json if available',
+      alias: ['id', 'i']
+    }
+  })
+  .commandDir(path.join(__dirname, 'cmds'))
+  .demandCommand(1, 'Please enter a command')
+  .addHelpOpt()
+  .argv

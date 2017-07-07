@@ -1,0 +1,7 @@
+mutation migrate($schema: MigrateSchemaInput!) {
+  migrateSchema(input: $schema) {
+    changedSchema {
+      modifiedAt
+    }
+  }
+}

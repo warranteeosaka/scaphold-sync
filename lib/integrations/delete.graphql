@@ -1,0 +1,7 @@
+mutation deleteIntegration($input: DeleteIntegrationInput!) {
+  deleteIntegration(input: $input) {
+    changedIntegration {
+      id
+    }
+  }
+}

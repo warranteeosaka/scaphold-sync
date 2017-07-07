@@ -1,0 +1,62 @@
+{
+  "name": "scaphold-sync",
+  "version": "1.0.0",
+  "description": "Sync and general operations system for interacting with scaphold.",
+  "main": ".",
+  "bin": {
+    "scaphold-sync": "./bin/scaphold-sync"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "lint": "standard",
+    "test": "npm run lint"
+  },
+  "keywords": [
+    "scaphold",
+    "sync",
+    "migration",
+    "database"
+  ],
+  "author": "Martin Heidegger <martin.heidegger@gmail.com>",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "standard": "^10.0.2"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "fs-promise": "^2.0.3",
+    "glob-promise": "^3.1.0",
+    "graphql-fetch": "^1.0.1",
+    "isomorphic-fetch": "^2.2.1",
+    "js-yaml": "^3.8.4",
+    "jsonstream": "^1.0.3",
+    "lodash.difference": "^4.5.0",
+    "lodash.findindex": "^4.6.0",
+    "lodash.groupby": "^4.6.0",
+    "lodash.intersection": "^4.4.0",
+    "lodash.isequal": "^4.5.0",
+    "lodash.keyby": "^4.6.0",
+    "lodash.last": "^3.0.0",
+    "lodash.matches": "^4.6.0",
+    "lodash.sortby": "^4.7.0",
+    "mkdirp-promise": "^5.0.1",
+    "parallel-stream": "^1.1.2",
+    "rimraf-promise": "^2.0.0",
+    "serverless": "^1.16.1",
+    "sort-keys": "^2.0.0",
+    "stream-array": "^1.1.2",
+    "stream-to-string": "^1.1.0",
+    "yargs": "^8.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/warranteeosaka/scaphold-sync.git"
+  },
+  "bugs": {
+    "url": "https://github.com/warranteeosaka/scaphold-sync/issues"
+  },
+  "homepage": "https://github.com/warranteeosaka/scaphold-sync#readme"
+}

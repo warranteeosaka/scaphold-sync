@@ -1,0 +1,80 @@
+query app($appId: ID!) {
+    getApp(id: $appId) {
+        name
+        description
+        schemas {
+            id
+            name
+            description
+            createdAt
+            modifiedAt
+            types {
+                id
+                name
+                description
+                kind
+                interfaces
+                fields {
+                    id
+                    name
+                    description
+                    columnName
+                    nonNull
+                    unique
+                    indexed
+                    type
+                    ofType
+                    ofTypeNonNull
+                    reverseName
+                    defaultValue
+                    isEditable
+                    through
+                    position
+                }
+                permissions {
+                    id
+                    scope
+                    userFields {
+                        id
+                    }
+                    protectedFields {
+                        id
+                    }
+                    roles {
+                        id
+                        name
+                    }
+                    enabled
+                    create
+                    read
+                    update
+                    delete
+                }
+                values
+                isBridge
+                position
+                isEditable
+                isDeletable
+                isExtendable
+            }
+        }
+        integrations {
+            id
+            name
+            type
+            config
+        }
+        logicFunctions {
+            id
+            mutation
+            description
+            uri
+            enabled
+            headers
+            method
+            fragment
+            type
+            position
+        }
+    }
+}

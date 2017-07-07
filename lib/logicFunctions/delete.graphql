@@ -1,0 +1,7 @@
+mutation delete($id: ID!, $appId: ID!) {
+  deleteLogicFunction(input: {id: $id, appId: $appId}) {
+    changedLogicFunction {
+      id
+    }
+  }
+}
